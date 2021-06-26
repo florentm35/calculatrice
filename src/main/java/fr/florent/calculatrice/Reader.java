@@ -28,11 +28,17 @@ public class Reader {
                 subOperation = new Operation();
                 subOperation.setOperator(EnumOperator.FACTORIAL);
             } else if (car == ')') {
+                int closeBracket = 1;
                 StringBuilder subFormula = new StringBuilder();
 
                 for (int j = i - 1; j >= 0; j--) {
                     char subCar = formula.charAt(j);
                     if (subCar == '(') {
+                        closeBracket--;
+                    } else if (subCar == ')') {
+                        closeBracket++;
+                    }
+                    if (closeBracket == 0) {
                         subOperation = parseFormula(subFormula.toString());
                         i = j;
                         break;

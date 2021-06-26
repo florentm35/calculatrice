@@ -137,6 +137,13 @@ public class CalculatorTest {
         testFormula(formula, 261);
     }
 
+    @Test
+    public void multiLevel() {
+        String formula = "(5+3)*(53*2)+100/(5*(15+5^1))-10";
+
+        testFormula(formula, 839);
+    }
+
     //
 
     private void testFormula(String formula, double expected) {
